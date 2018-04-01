@@ -132,19 +132,15 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ function(module, exports) {
 
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function(useSourceMap) {
+	"use strict";
+
+	module.exports = function (useSourceMap) {
 		var list = [];
 
-		// return the list of modules as css string
 		list.toString = function toString() {
 			return this.map(function (item) {
 				var content = cssWithMappingToString(item, useSourceMap);
-				if(item[2]) {
+				if (item[2]) {
 					return "@media " + item[2] + "{" + content + "}";
 				} else {
 					return content;
@@ -152,26 +148,20 @@ return /******/ (function(modules) { // webpackBootstrap
 			}).join("");
 		};
 
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
+		list.i = function (modules, mediaQuery) {
+			if (typeof modules === "string") modules = [[null, modules, ""]];
 			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
+			for (var i = 0; i < this.length; i++) {
 				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
+				if (typeof id === "number") alreadyImportedModules[id] = true;
 			}
-			for(i = 0; i < modules.length; i++) {
+			for (i = 0; i < modules.length; i++) {
 				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
+
+				if (typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if (mediaQuery && !item[2]) {
 						item[2] = mediaQuery;
-					} else if(mediaQuery) {
+					} else if (mediaQuery) {
 						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
 					}
 					list.push(item);
@@ -191,7 +181,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		if (useSourceMap && typeof btoa === 'function') {
 			var sourceMapping = toComment(cssMapping);
 			var sourceURLs = cssMapping.sources.map(function (source) {
-				return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+				return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */';
 			});
 
 			return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
@@ -200,15 +190,12 @@ return /******/ (function(modules) { // webpackBootstrap
 		return [content].join('\n');
 	}
 
-	// Adapted from convert-source-map (MIT)
 	function toComment(sourceMap) {
-		// eslint-disable-next-line no-undef
 		var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
 		var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
 
 		return '/*# ' + data + ' */';
 	}
-
 
 /***/ },
 /* 4 */
@@ -435,34 +422,31 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 5 */
 /***/ function(module, exports) {
 
-	/**
-	 * Translates the list format produced by css-loader into something
-	 * easier to manipulate.
-	 */
-	module.exports = function listToStyles (parentId, list) {
-	  var styles = []
-	  var newStyles = {}
+	'use strict';
+
+	module.exports = function listToStyles(parentId, list) {
+	  var styles = [];
+	  var newStyles = {};
 	  for (var i = 0; i < list.length; i++) {
-	    var item = list[i]
-	    var id = item[0]
-	    var css = item[1]
-	    var media = item[2]
-	    var sourceMap = item[3]
+	    var item = list[i];
+	    var id = item[0];
+	    var css = item[1];
+	    var media = item[2];
+	    var sourceMap = item[3];
 	    var part = {
 	      id: parentId + ':' + i,
 	      css: css,
 	      media: media,
 	      sourceMap: sourceMap
-	    }
+	    };
 	    if (!newStyles[id]) {
-	      styles.push(newStyles[id] = { id: id, parts: [part] })
+	      styles.push(newStyles[id] = { id: id, parts: [part] });
 	    } else {
-	      newStyles[id].parts.push(part)
+	      newStyles[id].parts.push(part);
 	    }
 	  }
-	  return styles
-	}
-
+	  return styles;
+	};
 
 /***/ },
 /* 6 */
@@ -525,9 +509,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 7 */
 /***/ function(module, exports) {
 
-	
+	'use strict';
 
-	export default {
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = {
 	    props: ['gistId'],
 	    head: {
 	        script: [{ src: 'https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' }, { src: 'https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.7.1/gist-embed.min.js' }]
