@@ -2,7 +2,7 @@
   <app-gist-core :gist-div="gistData"></app-gist-core>
 </template>
 <script>
-var gistUrl = 'https://gist.github.com/blairvanderhoof/'
+var gistUrl = 'https://gist.github.com/'
 var data = {}
 
 import GistCore from './GistCore.vue'
