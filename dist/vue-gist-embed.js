@@ -525,7 +525,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var gistUrl = 'https://gist.github.com/blairvanderhoof/';
+	var gistUrl = 'https://gist.github.com/';
 	var data = {};
 
 	exports.default = {
