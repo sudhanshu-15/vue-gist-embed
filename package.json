@@ -8,7 +8,9 @@
     },
     "author": "Sudhanshu Siddh",
     "license": "MIT",
-    "dependencies": {},
+    "dependencies": {
+        "jquery": "^3.3.1"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/sudhanshu-15/vue-gist-embed"

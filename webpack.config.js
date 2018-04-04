@@ -10,10 +10,6 @@ var config = {
         loaders: [{
                 test: /\.js$/,
                 loader: 'babel-loader',
-                // include: [
-                //     __dirname,
-                // ],
-                // exclude: /node_modules/
             },
             {
                 test: /\.vue$/,
@@ -26,14 +22,6 @@ var config = {
         ]
     },
     plugins: [
-        // new webpack.optimize.UglifyJsPlugin({
-        //     minimize: true,
-        //     sourceMap: false,
-        //     mangle: true,
-        //     compress: {
-        //         warnings: false
-        //     }
-        // })
     ]
 };
 
